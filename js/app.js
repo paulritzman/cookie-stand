@@ -60,9 +60,16 @@ var storeSeaTacAirport = {
       this.hourlyCookiesSold.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
       console.log(operatingHours[i] + ': ' + this.hourlyCookiesSold[i]);
     }
+  },
+  totalCookiesSoldDaily: function() {
+    for (var i = 0; i < this.hourlyCookiesSold.length; i++) {
+      this.dailyCookiesSold += this.hourlyCookiesSold[i];
+      console.log((this.dailyCookiesSold - this.hourlyCookiesSold[i]) + ' + ' + this.hourlyCookiesSold[i] + ' = ' + this.dailyCookiesSold);
+    }
   }
 };
 
 storeFirstPike.renderFirstPike();
 console.log('------------------- NEXT STORE -------------------');
 storeSeaTacAirport.cookiesSoldHourly();
+storeSeaTacAirport.totalCookiesSoldDaily();
