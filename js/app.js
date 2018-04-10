@@ -88,6 +88,23 @@ var storeSeaTacAirport = {
   }
 };
 
+var storeSeattleCenter = {
+  minCustHourly: 11,
+  maxCustHourly: 38,
+  avgCookiesPerCust: 3.7,
+  hourlyCookiesSold: [],
+  dailyCookiesSold: 0,
+  generateCustomers: function() {
+    return Math.random() * (this.maxCustHourly - this.minCustHourly) + this.minCustHourly;
+  },
+  cookiesSoldHourly: function() {
+    for (var i = 0; i < operatingHours.length; i++) {
+      this.hourlyCookiesSold.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
+      console.log(operatingHours[i] + ': ' + this.hourlyCookiesSold);
+    }
+  }
+};
+
 storeFirstPike.renderFirstPike();
 console.log('------------------- NEXT STORE -------------------');
 storeSeaTacAirport.renderSeaTacAirport();
