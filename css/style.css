@@ -1,0 +1,26 @@
+body {
+  background-color: lightblue;
+}
+header {
+  text-align: center;
+  font-size: 12px;
+  font-family: 'Amatic SC', cursive;
+  margin-top: 40px;
+  line-height: 1em;
+}
+img {
+  width: 125px;
+}
+aside {
+  border: 2px dashed black;
+  width: 200px;
+  text-align: center;
+}
+table {
+  width: 200px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
