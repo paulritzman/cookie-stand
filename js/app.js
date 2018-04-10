@@ -236,7 +236,21 @@ function CookieStand(minCustHourly, maxCustHourly, avgCookiesPerCust) {
   this.minCustHourly = minCustHourly;
   this.maxCustHourly = maxCustHourly;
   this.avgCookiesPerCust = avgCookiesPerCust;
-  var arrHourlyCookieSales = [];
-  var dailyCookiesSold = 0;
+  this.arrHourlyCustomers = [];
+  this.arrHourlyCookieSales = [];
+  this.dailyCookiesSold = 0;
   arrCookiesStands.push(this);
 }
+
+CookieStand.prototype.generateCustomers = function() {
+  this.arrHourlyCustomers.push(Math.round(Math.random() * (this.maxCustHourly - this.minCustHourly) + this.minCustHourly));
+};
+
+/*
+var testStand = new CookieStand(10, 20, 10);
+
+for (var i = 0; i < operatingHours.length; i++) {
+  testStand.generateCustomers();
+  console.log(operatingHours[i] + ': ' + testStand.arrHourlyCustomers[i] + ' customers');
+}
+*/
