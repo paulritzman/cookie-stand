@@ -14,7 +14,7 @@ function CookieStand(standLocation, minCustHourly, maxCustHourly, avgCookiesPerC
   this.arrCustomersPerHour = [];
   this.arrHourlyCookieSales = [];
   this.dailyCookiesSold = 0;
-  arrCookiesStands.push(this.standLocation);
+  arrCookiesStands.push(this);
 }
 
 // Generates a random number of customers - fills arrCustomersPerHour array
@@ -82,9 +82,28 @@ var renderTableHeader = function() {
   tableCookieStands.appendChild(headerRow);
 };
 
+/*
+var renderTableFooter = function() {
+  var footerRow = document.createElement('tr');
+  var tdElement = document.createElement('td');
+
+  tdElement.textContent = 'Total: ';
+
+  footerRow.appendChild(tdElement);
+};
+*/
+
 renderTableHeader();
-var testStand = new CookieStand('First & Pike', 10, 20, 10);
-testStand.generateCustomers();
-testStand.calcCookiesPerHour();
-testStand.calcCookiesPerDay();
-testStand.renderHourlySales();
+
+new CookieStand('1st and Pike', 23, 65, 6.3);
+new CookieStand('SeaTac Airport', 3, 24, 1.2);
+new CookieStand('Seattle Center', 11, 38, 3.7);
+new CookieStand('Capitol Hill', 20, 38, 2.3);
+new CookieStand('Alki', 2, 16, 4.6);
+
+for (var i = 0; i < arrCookiesStands.length; i++) {
+  arrCookiesStands[i].generateCustomers();
+  arrCookiesStands[i].calcCookiesPerHour();
+  arrCookiesStands[i].calcCookiesPerDay();
+  arrCookiesStands[i].renderHourlySales();
+}
