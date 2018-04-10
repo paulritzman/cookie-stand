@@ -236,21 +236,33 @@ function CookieStand(minCustHourly, maxCustHourly, avgCookiesPerCust) {
   this.minCustHourly = minCustHourly;
   this.maxCustHourly = maxCustHourly;
   this.avgCookiesPerCust = avgCookiesPerCust;
-  this.arrHourlyCustomers = [];
+  this.arrCustomersPerHour = [];
   this.arrHourlyCookieSales = [];
   this.dailyCookiesSold = 0;
   arrCookiesStands.push(this);
 }
 
+// Generates a random number of customers - fills arrCustomersPerHour array
 CookieStand.prototype.generateCustomers = function() {
-  this.arrHourlyCustomers.push(Math.round(Math.random() * (this.maxCustHourly - this.minCustHourly) + this.minCustHourly));
+  for (var i = 0; i < operatingHours.length; i++) {
+    this.arrCustomersPerHour.push(Math.round(Math.random() * (this.maxCustHourly - this.minCustHourly) + this.minCustHourly));
+  }
 };
+
+// Calculates number of cookies sold each hour - fills arrHourlyCookiesSold array
+CookieStand.prototype.calcCookiesPerHour = function() {
+  for (var i = 0; i < this.arrCustomersPerHour.length; i++) {
+    this.arrHourlyCookieSales.push(Math.round(this.arrCustomersPerHour[i] * this.avgCookiesPerCust));
+  }
+};
+
 
 /*
 var testStand = new CookieStand(10, 20, 10);
+testStand.generateCustomers();
+testStand.calcCookiesPerHour();
 
-for (var i = 0; i < operatingHours.length; i++) {
-  testStand.generateCustomers();
-  console.log(operatingHours[i] + ': ' + testStand.arrHourlyCustomers[i] + ' customers');
+for (var i = 0; i < testStand.arrCustomersPerHour.length; i++) {
+  console.log(testStand.arrCustomersPerHour[i] + ' times ' + testStand.avgCookiesPerCust + ' = ' + testStand.arrHourlyCookieSales[i] + ' cookies sold each hour');
 }
 */
