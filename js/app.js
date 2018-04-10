@@ -131,8 +131,34 @@ var storeSeattleCenter = {
   }
 };
 
+var storeCapitolHill = {
+  minCustHourly: 20,
+  maxCustHourly: 38,
+  avgCookiesPerCust: 2.3,
+  arrHourlyCookieSales: [],
+  dailyCookiesSold: 0,
+  generateCustomers: function() {
+    return Math.random() * (this.maxCustHourly - this.minCustHourly) + this.minCustHourly;
+  },
+  calcCookiesPerHour: function() {
+    for (var i = 0; i < operatingHours.length; i++) {
+      this.arrHourlyCookieSales.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
+      console.log(operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
+    }
+  },
+  calcCookiesPerDay: function() {
+    for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
+      this.dailyCookiesSold += this.arrHourlyCookieSales[i];
+      console.log((this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
+    }
+  }
+};
+
 storeFirstPike.renderFirstPike();
 console.log('------------------- NEXT STORE -------------------');
 storeSeaTacAirport.renderSeaTacAirport();
 console.log('------------------- NEXT STORE -------------------');
 storeSeattleCenter.renderSeattleCenter();
+console.log('------------------- NEXT STORE -------------------');
+storeCapitolHill.calcCookiesPerHour();
+storeCapitolHill.calcCookiesPerDay();
