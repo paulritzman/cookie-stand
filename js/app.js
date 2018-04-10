@@ -253,16 +253,22 @@ CookieStand.prototype.generateCustomers = function() {
 CookieStand.prototype.calcCookiesPerHour = function() {
   for (var i = 0; i < this.arrCustomersPerHour.length; i++) {
     this.arrHourlyCookieSales.push(Math.round(this.arrCustomersPerHour[i] * this.avgCookiesPerCust));
+    // console.log test below
+    console.log(this.arrCustomersPerHour[i] + ' customers bought ' + this.arrHourlyCookieSales[i] + ' cookies this hour');
+  }
+};
+
+// Calculates total number of cookies sold per day
+CookieStand.prototype.calcCookiesPerDay = function() {
+  for (var i = 0; i < this.arrCustomersPerHour.length; i++) {
+    this.dailyCookiesSold += this.arrHourlyCookieSales[i];
+    // console.log test below
+    console.log((this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
   }
 };
 
 
-/*
 var testStand = new CookieStand(10, 20, 10);
 testStand.generateCustomers();
 testStand.calcCookiesPerHour();
-
-for (var i = 0; i < testStand.arrCustomersPerHour.length; i++) {
-  console.log(testStand.arrCustomersPerHour[i] + ' times ' + testStand.avgCookiesPerCust + ' = ' + testStand.arrHourlyCookieSales[i] + ' cookies sold each hour');
-}
-*/
+testStand.calcCookiesPerDay();
