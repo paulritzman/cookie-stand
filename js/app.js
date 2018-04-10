@@ -1,5 +1,7 @@
 'use strict';
 
+/*
+
 var operatingHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
 
 // Creates object to represent the 1st and Pike cookie stand
@@ -223,3 +225,18 @@ storeSeaTacAirport.renderSeaTacAirport();
 storeSeattleCenter.renderSeattleCenter();
 storeCapitolHill.renderCapitolHill();
 storeAlki.renderAlki();
+
+*/
+
+var operatingHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
+
+var arrCookiesStands = [];
+
+function CookieStand(minCustHourly, maxCustHourly, avgCookiesPerCust) {
+  this.minCustHourly = minCustHourly;
+  this.maxCustHourly = maxCustHourly;
+  this.avgCookiesPerCust = avgCookiesPerCust;
+  var arrHourlyCookieSales = [];
+  var dailyCookiesSold = 0;
+  arrCookiesStands.push(this);
+}
