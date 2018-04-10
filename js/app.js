@@ -102,6 +102,12 @@ var storeSeattleCenter = {
       this.hourlyCookiesSold.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
       console.log(operatingHours[i] + ': ' + this.hourlyCookiesSold);
     }
+  },
+  totalCookiesSoldDaily: function() {
+    for (var i = 0; i < this.hourlyCookiesSold.length; i++) {
+      this.dailyCookiesSold += this.hourlyCookiesSold[i];
+      console.log((this.dailyCookiesSold - this.hourlyCookiesSold[i]) + ' + ' + this.hourlyCookiesSold[i] + ' = ' + this.dailyCookiesSold);
+    }
   }
 };
 
