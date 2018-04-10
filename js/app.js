@@ -232,14 +232,17 @@ var operatingHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','
 
 var arrCookiesStands = [];
 
-function CookieStand(minCustHourly, maxCustHourly, avgCookiesPerCust) {
+var tableCookieStands = document.getElementById('cookie-stand-table');
+
+function CookieStand(standLocation, minCustHourly, maxCustHourly, avgCookiesPerCust) {
+  this.standLocation = standLocation;
   this.minCustHourly = minCustHourly;
   this.maxCustHourly = maxCustHourly;
   this.avgCookiesPerCust = avgCookiesPerCust;
   this.arrCustomersPerHour = [];
   this.arrHourlyCookieSales = [];
   this.dailyCookiesSold = 0;
-  arrCookiesStands.push(this);
+  arrCookiesStands.push(this.standLocation);
 }
 
 // Generates a random number of customers - fills arrCustomersPerHour array
@@ -267,8 +270,28 @@ CookieStand.prototype.calcCookiesPerDay = function() {
   }
 };
 
+// Populates a row in the cookie-stand-table in sales.html with the stand location and hourly sales figures
+CookieStand.prototype.renderHourlySales = function() {
+  var trElement = document.createElement('tr');
+  var tdElement = document.createElement('td');
 
-var testStand = new CookieStand(10, 20, 10);
+  tdElement.textContent = this.standLocation;
+
+  trElement.appendChild(tdElement);
+
+  for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
+    tdElement = document.createElement('td');
+
+    tdElement.textContent = this.arrHourlyCookieSales[i];
+
+    trElement.appendChild(tdElement);
+  }
+
+  tableCookieStands.appendChild(trElement);
+};
+
+var testStand = new CookieStand('First & Pike', 10, 20, 10);
 testStand.generateCustomers();
 testStand.calcCookiesPerHour();
 testStand.calcCookiesPerDay();
+testStand.renderHourlySales();
