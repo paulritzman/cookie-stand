@@ -15,13 +15,13 @@ var storeFirstPike = {
   calcCookiesPerHour: function() { // Calculates number of cookies sold each hour - rounded to whole number
     for (var i = 0; i < operatingHours.length; i++) {
       this.arrHourlyCookieSales.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
-      console.log(operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
+      console.log('FirstPike - ' + operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
     }
   },
   calcCookiesPerDay: function() { // Calculates total number of cookies sold that day
     for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
       this.dailyCookiesSold += this.arrHourlyCookieSales[i];
-      console.log((this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
+      console.log('FirstPike - ' + (this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
     }
   },
   renderFirstPike: function() { // Writes the number of cookies sold each hour to sales.html as <li> elements
@@ -58,13 +58,13 @@ var storeSeaTacAirport = {
   calcCookiesPerHour: function() { // Calculates number of cookies sold each hour - rounded to whole number
     for (var i = 0; i < operatingHours.length; i++) {
       this.arrHourlyCookieSales.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
-      console.log(operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
+      console.log('SeaTac - ' + operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
     }
   },
   calcCookiesPerDay: function() { // Calculates total number of cookies sold that day
     for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
       this.dailyCookiesSold += this.arrHourlyCookieSales[i];
-      console.log((this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
+      console.log('SeaTac - ' + (this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
     }
   },
   renderSeaTacAirport: function() { // Writes the number of cookies sold each hour to sales.html as <li> elements
@@ -101,13 +101,13 @@ var storeSeattleCenter = {
   calcCookiesPerHour: function() { // Calculates number of cookies sold each hour - rounded to whole number
     for (var i = 0; i < operatingHours.length; i++) {
       this.arrHourlyCookieSales.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
-      console.log(operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
+      console.log('SeattleCenter - ' + operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
     }
   },
   calcCookiesPerDay: function() { // Calculates total number of cookies sold that day
     for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
       this.dailyCookiesSold += this.arrHourlyCookieSales[i];
-      console.log((this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
+      console.log('SeattleCenter - ' + (this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
     }
   },
   renderSeattleCenter: function() { // Writes the number of cookies sold each hour to sales.html as <li> elements
@@ -144,13 +144,13 @@ var storeCapitolHill = {
   calcCookiesPerHour: function() { // Calculates number of cookies sold each hour - rounded to whole number
     for (var i = 0; i < operatingHours.length; i++) {
       this.arrHourlyCookieSales.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
-      console.log(operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
+      console.log('CapitolHill - ' + operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
     }
   },
   calcCookiesPerDay: function() { // Calculates total number of cookies sold that day
     for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
       this.dailyCookiesSold += this.arrHourlyCookieSales[i];
-      console.log((this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
+      console.log('CapitolHill - ' + (this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
     }
   },
   renderCapitolHill: function() { // Writes the number of cookies sold each hour to sales.html as <li> elements
@@ -174,34 +174,52 @@ var storeCapitolHill = {
   }
 };
 
+// Creates object to represent the Alki cookie stand
 var storeAlki = {
   minCustHourly: 2,
   maxCustHourly: 16,
   avgCookiesPerCust: 4.6,
   arrHourlyCookieSales: [],
   dailyCookiesSold: 0,
-  generateCustomers: function() {
+  generateCustomers: function() { // Generates a random number of customers
     return Math.random() * (this.maxCustHourly - this.minCustHourly) + this.minCustHourly;
   },
-  calcCookiesPerHour: function() {
+  calcCookiesPerHour: function() { // Calculates number of cookies sold each hour - rounded to whole number
     for (var i = 0; i < operatingHours.length; i++) {
       this.arrHourlyCookieSales.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
-      console.log(operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
+      console.log('Alki - ' + operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
     }
   },
-  calcCookiesPerDay: function() {
+  calcCookiesPerDay: function() { // Calculates total number of cookies sold that day
     for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
       this.dailyCookiesSold += this.arrHourlyCookieSales[i];
-      console.log((this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
+      console.log('Alki - ' + (this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
     }
-  }
-}
+  },
+  renderAlki: function() { // Writes the number of cookies sold each hour to sales.html as <li> elements
+    // Executes both methods to instantiate each property
+    this.calcCookiesPerHour();
+    this.calcCookiesPerDay();
 
+    var ulElement = document.getElementById('alki');
+
+    // Writes number of cookies sold each hour
+    for (var i = 0; i < operatingHours.length; i++) {
+      var liElement = document.createElement('li');
+      liElement.textContent = operatingHours[i] + ': ' + this.arrHourlyCookieSales[i] + ' cookies';
+      ulElement.appendChild(liElement);
+    }
+
+    // Writes total number of cookies sold that day
+    liElement = document.createElement('li');
+    liElement.textContent = 'Total: ' + this.dailyCookiesSold + ' cookies';
+    ulElement.appendChild(liElement);
+  }
+};
+
+// Calls each objects render method to write the data to the document
 storeFirstPike.renderFirstPike();
-console.log('------------------- NEXT STORE -------------------');
 storeSeaTacAirport.renderSeaTacAirport();
-console.log('------------------- NEXT STORE -------------------');
 storeSeattleCenter.renderSeattleCenter();
-console.log('------------------- NEXT STORE -------------------');
 storeCapitolHill.renderCapitolHill();
-console.log('------------------- NEXT STORE -------------------');
+storeAlki.renderAlki();
