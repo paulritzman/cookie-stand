@@ -19,9 +19,9 @@
       <form id="new-stand-form">
         <fieldset>
           <label for="location">Location</label><input type="text" placeholder="store location" id="input-stand" name="location" />
-          <label for="minimum">Min. Cust/Hour</label><input type="number" id="min-customers" name="minimum" />
-          <label for="maximum">Max. Cust/Hour</label><input type="number" id="max-customers" name="maximum" />
-          <label for="cookie-num">Avg. Cookies/Cust</label><input type="number" id="avg-cookies" name="cookies" />
+          <label for="minimum">Min. Cust/Hour</label><input type="number" id="min-customers" name="minimum" min="0" />
+          <label for="maximum">Max. Cust/Hour</label><input type="number" id="max-customers" name="maximum" min="0" />
+          <label for="cookie-num">Avg. Cookies/Cust</label><input type="number" id="avg-cookies" name="cookies" step="0.1" min="0" />
           <input type="submit" id="form-submit" />
         </fieldset>
       </form>
