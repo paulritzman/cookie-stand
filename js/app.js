@@ -1,10 +1,10 @@
 'use strict';
 
 var operatingHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
-
 var arrCookiesStands = [];
-
+var arrSalesColumnTotals = [];
 var tableCookieStands = document.getElementById('cookie-stand-table');
+var totalCookiesSold = 0;
 
 function CookieStand(standLocation, minCustHourly, maxCustHourly, avgCookiesPerCust) {
   this.standLocation = standLocation;
@@ -48,18 +48,32 @@ CookieStand.prototype.renderHourlySales = function() {
   var tdElement = document.createElement('td');
 
   tdElement.textContent = this.standLocation;
-
   trElement.appendChild(tdElement);
 
   for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
     tdElement = document.createElement('td');
-
     tdElement.textContent = this.arrHourlyCookieSales[i];
-
     trElement.appendChild(tdElement);
+
+    arrSalesColumnTotals[i] += this.arrHourlyCookieSales[i]; // Populate array for use in renderTableFooter function
+    console.log('arrSalesColumnTotals: ' + arrSalesColumnTotals[i]);
   }
 
+  tdElement = document.createElement('td');
+  tdElement.textContent = this.dailyCookiesSold;
+  trElement.appendChild(tdElement);
+
   tableCookieStands.appendChild(trElement);
+};
+
+// Executes all object prototype functions for each instance of CookieStand
+var populateCookieStands = function() {
+  for (var i = 0; i < arrCookiesStands.length; i++) {
+    arrCookiesStands[i].generateCustomers();
+    arrCookiesStands[i].calcCookiesPerHour();
+    arrCookiesStands[i].calcCookiesPerDay();
+    arrCookiesStands[i].renderHourlySales();
+  }
 };
 
 // Populates a header row for the cookie-stand-table table in sale.html with cookie stand the operating hours
@@ -68,32 +82,42 @@ var renderTableHeader = function() {
   var thElement = document.createElement('th');
 
   thElement.textContent = '';
-
   headerRow.appendChild(thElement);
 
   for (var i = 0; i < operatingHours.length; i++) {
     thElement = document.createElement('th');
-
     thElement.textContent = operatingHours[i];
-
     headerRow.appendChild(thElement);
   }
+
+  thElement = document.createElement('th');
+  thElement.textContent = 'Total';
+  headerRow.appendChild(thElement);
 
   tableCookieStands.appendChild(headerRow);
 };
 
-/*
 var renderTableFooter = function() {
   var footerRow = document.createElement('tr');
   var tdElement = document.createElement('td');
 
   tdElement.textContent = 'Total: ';
-
   footerRow.appendChild(tdElement);
-};
-*/
 
-renderTableHeader();
+  for (var i = 0; i < operatingHours.length; i++) {
+    tdElement = document.createElement('td');
+    tdElement.textContent = arrSalesColumnTotals[i];
+    footerRow.appendChild(tdElement);
+
+    totalCookiesSold += arrSalesColumnTotals[i];
+  }
+
+  tdElement = document.createElement('td');
+  tdElement.textContent = totalCookiesSold;
+  footerRow.appendChild(tdElement);
+
+  tableCookieStands.appendChild(footerRow);
+};
 
 new CookieStand('1st and Pike', 23, 65, 6.3);
 new CookieStand('SeaTac Airport', 3, 24, 1.2);
@@ -101,9 +125,6 @@ new CookieStand('Seattle Center', 11, 38, 3.7);
 new CookieStand('Capitol Hill', 20, 38, 2.3);
 new CookieStand('Alki', 2, 16, 4.6);
 
-for (var i = 0; i < arrCookiesStands.length; i++) {
-  arrCookiesStands[i].generateCustomers();
-  arrCookiesStands[i].calcCookiesPerHour();
-  arrCookiesStands[i].calcCookiesPerDay();
-  arrCookiesStands[i].renderHourlySales();
-}
+renderTableHeader();
+populateCookieStands();
+renderTableFooter();
