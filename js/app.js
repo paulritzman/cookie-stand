@@ -159,7 +159,12 @@ var handleFormSubmission = function(event) {
   var formElement = event.target;
   new CookieStand(formElement.location.value, formElement.minimum.value, formElement.maximum.value, formElement.cookies.value);
 
+  arrCookieStands[arrCookieStands.length - 1].generateCustomers();
+  arrCookieStands[arrCookieStands.length - 1].calcCookiesPerHour();
+  arrCookieStands[arrCookieStands.length - 1].calcCookiesPerDay();
   arrCookieStands[arrCookieStands.length - 1].renderTableRow();
+
+  renderTableFooter();
 };
 
 formSubmitElement.addEventListener('submit', handleFormSubmission);
