@@ -23,7 +23,7 @@ function CookieStand(standLocation, minCustHourly, maxCustHourly, avgCookiesPerC
 // Generates a random number of customers - fills arrCustomersPerHour array
 CookieStand.prototype.generateCustomers = function() {
   for (var i = 0; i < operatingHours.length; i++) {
-    this.arrCustomersPerHour.push(Math.round(Math.random() * (this.maxCustHourly - this.minCustHourly) + this.minCustHourly));
+    this.arrCustomersPerHour.push(Math.round(Math.random() * (Number(this.maxCustHourly) - Number(this.minCustHourly)) + Number(this.minCustHourly)));
   }
 };
 
@@ -158,6 +158,8 @@ var handleFormSubmission = function(event) {
 
   var formElement = event.target;
   new CookieStand(formElement.location.value, formElement.minimum.value, formElement.maximum.value, formElement.cookies.value);
+
+  console.log(arrCookieStands);
 
   arrCookieStands[arrCookieStands.length - 1].generateCustomers();
   arrCookieStands[arrCookieStands.length - 1].calcCookiesPerHour();
