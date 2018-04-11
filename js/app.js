@@ -2,8 +2,8 @@
 
 // Declares global variables
 var operatingHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
-var arrCookiesStands = [];
-var arrSalesColumnTotals = [];
+var arrCookiesStands = []; // Array to hold each CookieStand object
+var arrSalesColumnTotals = []; // Array to hold total of cookies sold per cookie-stand-table columns
 var tableCookieStands = document.getElementById('cookie-stand-table');
 var totalCookiesSold = 0;
 
@@ -47,7 +47,7 @@ CookieStand.prototype.calcCookiesPerDay = function() {
 };
 
 // Populates a row for the cookie-stand-table table in sales.html with the stand location and hourly sales figures
-CookieStand.prototype.renderHourlySales = function() {
+CookieStand.prototype.renderTableRow = function() {
   var trElement = document.createElement('tr');
   var tdElement = document.createElement('td');
 
@@ -76,7 +76,7 @@ var populateCookieStands = function() {
     arrCookiesStands[i].generateCustomers();
     arrCookiesStands[i].calcCookiesPerHour();
     arrCookiesStands[i].calcCookiesPerDay();
-    arrCookiesStands[i].renderHourlySales();
+    arrCookiesStands[i].renderTableRow();
   }
 };
 
