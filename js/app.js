@@ -150,6 +150,14 @@ new CookieStand('Seattle Center', 11, 38, 3.7);
 new CookieStand('Capitol Hill', 20, 38, 2.3);
 new CookieStand('Alki', 2, 16, 4.6);
 
+// Removes the "Total" row from cookie-stand-table
+var deleteTableRow = function() {
+  totalCookiesSold = 0; // Resets variable to 0, ensuring total doesn't double when renderTableFooter is called again
+
+  document.getElementById('cookie-stand-table').deleteRow(-1);
+};
+
+
 var formSubmitElement = document.getElementById('new-stand-form');
 
 var handleFormSubmission = function(event) {
@@ -160,6 +168,8 @@ var handleFormSubmission = function(event) {
   new CookieStand(formElement.location.value, formElement.minimum.value, formElement.maximum.value, formElement.cookies.value);
 
   console.log(arrCookieStands);
+
+  deleteTableRow();
 
   arrCookieStands[arrCookieStands.length - 1].generateCustomers();
   arrCookieStands[arrCookieStands.length - 1].calcCookiesPerHour();
