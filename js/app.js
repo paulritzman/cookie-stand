@@ -2,10 +2,11 @@
 
 // Declares global variables
 var operatingHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
-var arrCookiesStands = [];
-var arrSalesColumnTotals = [];
-var tableCookieStands = document.getElementById('cookie-stand-table');
+var arrCookieStands = []; // Array to hold each CookieStand object
+var arrSalesColumnTotals = []; // Array to hold total of cookies sold per cookie-stand-table columns
 var totalCookiesSold = 0;
+
+var tableCookieStands = document.getElementById('cookie-stand-table');
 
 // Declares the CookieStand Constuctor
 function CookieStand(standLocation, minCustHourly, maxCustHourly, avgCookiesPerCust) {
@@ -16,7 +17,7 @@ function CookieStand(standLocation, minCustHourly, maxCustHourly, avgCookiesPerC
   this.arrCustomersPerHour = [];
   this.arrHourlyCookieSales = [];
   this.dailyCookiesSold = 0;
-  arrCookiesStands.push(this);
+  arrCookieStands.push(this);
 }
 
 // Generates a random number of customers - fills arrCustomersPerHour array
@@ -47,7 +48,7 @@ CookieStand.prototype.calcCookiesPerDay = function() {
 };
 
 // Populates a row for the cookie-stand-table table in sales.html with the stand location and hourly sales figures
-CookieStand.prototype.renderHourlySales = function() {
+CookieStand.prototype.renderTableRow = function() {
   var trElement = document.createElement('tr');
   var tdElement = document.createElement('td');
 
@@ -67,19 +68,6 @@ CookieStand.prototype.renderHourlySales = function() {
   tableCookieStands.appendChild(trElement);
 };
 
-// Executes all object prototype functions for each instance of CookieStand
-var populateCookieStands = function() {
-  for (var i = 0; i < arrCookiesStands.length; i++) {
-    // Logs when function starts for testing purposes
-    console.log('Start of populateCookieStands for: ' + arrCookiesStands[i].standLocation);
-
-    arrCookiesStands[i].generateCustomers();
-    arrCookiesStands[i].calcCookiesPerHour();
-    arrCookiesStands[i].calcCookiesPerDay();
-    arrCookiesStands[i].renderHourlySales();
-  }
-};
-
 // Calculates the total cookies sold each hour, as well as the overall daily total
 var calcTotalCookiesSold = function() {
   console.log('Start of calcTotalCookiesSold'); // Logs when function starts for testing purposes
@@ -87,8 +75,8 @@ var calcTotalCookiesSold = function() {
   for (var i = 0; i < operatingHours.length; i++) {
     var tempTotalCookies = 0;
 
-    for (var j = 0; j < arrCookiesStands.length; j++) {
-      tempTotalCookies += arrCookiesStands[j].arrHourlyCookieSales[i];
+    for (var j = 0; j < arrCookieStands.length; j++) {
+      tempTotalCookies += arrCookieStands[j].arrHourlyCookieSales[i];
     }
 
     arrSalesColumnTotals[i] = tempTotalCookies;
@@ -123,6 +111,7 @@ var renderTableHeader = function() {
 // Populates a footer row for the cookie-stand-table table in sale.html with total hourly and overall cookies sold
 var renderTableFooter = function() {
   calcTotalCookiesSold();
+
   var footerRow = document.createElement('tr');
   var tdElement = document.createElement('td');
 
@@ -141,6 +130,57 @@ var renderTableFooter = function() {
 
   tableCookieStands.appendChild(footerRow);
 };
+
+// Removes the "Total" row from cookie-stand-table
+var deleteTableRow = function() {
+  totalCookiesSold = 0; // Ensures total doesn't double when renderTableFooter is called again
+
+  document.getElementById('cookie-stand-table').deleteRow(-1);
+};
+
+// Generates a new row in cookie-stand-table to reflect new CookieStand instances
+// Also recreates table footer to show new totals
+var newCookieStandRow = function() {
+  deleteTableRow(); // Deletes "Total" row in table
+
+  // Populates new CookieStand instance and appends row in table
+  arrCookieStands[arrCookieStands.length - 1].generateCustomers();
+  arrCookieStands[arrCookieStands.length - 1].calcCookiesPerHour();
+  arrCookieStands[arrCookieStands.length - 1].calcCookiesPerDay();
+  arrCookieStands[arrCookieStands.length - 1].renderTableRow();
+
+  renderTableFooter(); // Creates new "Total" row - including data from new CookieStand instance
+};
+
+// Executes all object prototype functions for each instance of CookieStand
+var populateCookieStands = function() {
+  for (var i = 0; i < arrCookieStands.length; i++) {
+    // Logs when function starts for testing purposes
+    console.log('Start of populateCookieStands for: ' + arrCookieStands[i].standLocation);
+
+    arrCookieStands[i].generateCustomers();
+    arrCookieStands[i].calcCookiesPerHour();
+    arrCookieStands[i].calcCookiesPerDay();
+    arrCookieStands[i].renderTableRow();
+  }
+};
+
+// Stores the location of the form from sales.html
+var formSubmitElement = document.getElementById('new-stand-form');
+
+// Handles form submission to create a new CookieStand instance
+var handleFormSubmission = function(event) {
+  event.preventDefault();
+  console.log('The form was submitted!');
+
+  var formElement = event.target;
+  new CookieStand(formElement.location.value, Number(formElement.minimum.value), Number(formElement.maximum.value), Number(formElement.cookies.value));
+
+  newCookieStandRow(); // Creates new row in table to reflect new instance
+};
+
+// Listens for user to submit form to create new CookieStand instance
+formSubmitElement.addEventListener('submit', handleFormSubmission);
 
 // Instantiates CookieStand objects
 new CookieStand('1st and Pike', 23, 65, 6.3);
