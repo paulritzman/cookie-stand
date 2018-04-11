@@ -8,8 +8,8 @@ header {
   margin-top: 40px;
   line-height: 1em;
 }
-img {
-  width: 125px;
+main {
+  margin-left: 2%;
 }
 aside {
   position: absolute;
@@ -39,16 +39,12 @@ table {
 h2 {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
-ul li {
-  display: inline;
-  font-family: 'Amatic SC', cursive;
-  font-weight: bold;
-  font-size: 20px;
-  padding-left: 10px;
-}
-#cookie-stand-table {
-  border: 1px solid black;
+img {
+  width: 125px;
 }
 tr td {
+  border: 1px solid black;
+}
+#cookie-stand-table {
   border: 1px solid black;
 }
