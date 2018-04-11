@@ -54,9 +54,6 @@ CookieStand.prototype.renderHourlySales = function() {
     tdElement = document.createElement('td');
     tdElement.textContent = this.arrHourlyCookieSales[i];
     trElement.appendChild(tdElement);
-
-    arrSalesColumnTotals[i] += this.arrHourlyCookieSales[i]; // Populate array for use in renderTableFooter function
-    console.log('arrSalesColumnTotals: ' + arrSalesColumnTotals[i]);
   }
 
   tdElement = document.createElement('td');
@@ -64,6 +61,18 @@ CookieStand.prototype.renderHourlySales = function() {
   trElement.appendChild(tdElement);
 
   tableCookieStands.appendChild(trElement);
+};
+
+// Calculates the total cookies sold each hour, as well as the overall daily total
+var calcTotalCookiesSold = function() {
+  for (var i = 0; i < operatingHours.length; i++) {
+    var tempTotalCookies = 0;
+    for (var j = 0; j < arrCookiesStands.length; j++) {
+      tempTotalCookies += arrCookiesStands[j].arrHourlyCookieSales[i];
+    }
+    arrSalesColumnTotals[i] = tempTotalCookies;
+    totalCookiesSold += tempTotalCookies;
+  }
 };
 
 // Executes all object prototype functions for each instance of CookieStand
@@ -98,6 +107,7 @@ var renderTableHeader = function() {
 };
 
 var renderTableFooter = function() {
+  calcTotalCookiesSold();
   var footerRow = document.createElement('tr');
   var tdElement = document.createElement('td');
 
@@ -108,8 +118,6 @@ var renderTableFooter = function() {
     tdElement = document.createElement('td');
     tdElement.textContent = arrSalesColumnTotals[i];
     footerRow.appendChild(tdElement);
-
-    totalCookiesSold += arrSalesColumnTotals[i];
   }
 
   tdElement = document.createElement('td');
