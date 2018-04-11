@@ -138,6 +138,20 @@ var deleteTableRow = function() {
   document.getElementById('cookie-stand-table').deleteRow(-1);
 };
 
+// Generates a new row in cookie-stand-table to reflect new CookieStand instances
+// Also recreates table footer to show new totals
+var newCookieStandRow = function() {
+  deleteTableRow(); // Deletes "Total" row in table
+
+  // Populates new CookieStand instance and appends row in table
+  arrCookieStands[arrCookieStands.length - 1].generateCustomers();
+  arrCookieStands[arrCookieStands.length - 1].calcCookiesPerHour();
+  arrCookieStands[arrCookieStands.length - 1].calcCookiesPerDay();
+  arrCookieStands[arrCookieStands.length - 1].renderTableRow();
+
+  renderTableFooter(); // Creates new "Total" row - including data from new CookieStand instance
+};
+
 // Executes all object prototype functions for each instance of CookieStand
 var populateCookieStands = function() {
   for (var i = 0; i < arrCookieStands.length; i++) {
@@ -155,7 +169,6 @@ var populateCookieStands = function() {
 var formSubmitElement = document.getElementById('new-stand-form');
 
 // Handles form submission to create a new CookieStand instance
-// Also appends cookie-stand-table with a new row reflecting the new CookieStand instance
 var handleFormSubmission = function(event) {
   event.preventDefault();
   console.log('The form was submitted!');
@@ -163,15 +176,7 @@ var handleFormSubmission = function(event) {
   var formElement = event.target;
   new CookieStand(formElement.location.value, formElement.minimum.value, formElement.maximum.value, formElement.cookies.value);
 
-  deleteTableRow(); // Deletes "Total" row in table
-
-  // Populates new CookieStand instance and appends row in table
-  arrCookieStands[arrCookieStands.length - 1].generateCustomers();
-  arrCookieStands[arrCookieStands.length - 1].calcCookiesPerHour();
-  arrCookieStands[arrCookieStands.length - 1].calcCookiesPerDay();
-  arrCookieStands[arrCookieStands.length - 1].renderTableRow();
-
-  renderTableFooter(); // Creates new "Total" row - including data from new CookieStand instance
+  newCookieStandRow(); // Creates new row in table to reflect new instance
 };
 
 // Listens for user to submit form to create new CookieStand instance
