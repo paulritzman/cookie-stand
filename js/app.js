@@ -67,6 +67,19 @@ CookieStand.prototype.renderHourlySales = function() {
   tableCookieStands.appendChild(trElement);
 };
 
+// Executes all object prototype functions for each instance of CookieStand
+var populateCookieStands = function() {
+  for (var i = 0; i < arrCookiesStands.length; i++) {
+    // Logs when function starts for testing purposes
+    console.log('Start of populateCookieStands for: ' + arrCookiesStands[i].standLocation);
+
+    arrCookiesStands[i].generateCustomers();
+    arrCookiesStands[i].calcCookiesPerHour();
+    arrCookiesStands[i].calcCookiesPerDay();
+    arrCookiesStands[i].renderHourlySales();
+  }
+};
+
 // Calculates the total cookies sold each hour, as well as the overall daily total
 var calcTotalCookiesSold = function() {
   console.log('Start of calcTotalCookiesSold'); // Logs when function starts for testing purposes
@@ -83,19 +96,6 @@ var calcTotalCookiesSold = function() {
 
     // console.log test below
     console.log((totalCookiesSold - tempTotalCookies) + ' + ' + tempTotalCookies + ' = ' + totalCookiesSold);
-  }
-};
-
-// Executes all object prototype functions for each instance of CookieStand
-var populateCookieStands = function() {
-  for (var i = 0; i < arrCookiesStands.length; i++) {
-    // Logs when function starts for testing purposes
-    console.log('Start of populateCookieStands for: ' + arrCookiesStands[i].standLocation);
-
-    arrCookiesStands[i].generateCustomers();
-    arrCookiesStands[i].calcCookiesPerHour();
-    arrCookiesStands[i].calcCookiesPerDay();
-    arrCookiesStands[i].renderHourlySales();
   }
 };
 
