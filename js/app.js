@@ -68,19 +68,6 @@ CookieStand.prototype.renderTableRow = function() {
   tableCookieStands.appendChild(trElement);
 };
 
-// Executes all object prototype functions for each instance of CookieStand
-var populateCookieStands = function() {
-  for (var i = 0; i < arrCookieStands.length; i++) {
-    // Logs when function starts for testing purposes
-    console.log('Start of populateCookieStands for: ' + arrCookieStands[i].standLocation);
-
-    arrCookieStands[i].generateCustomers();
-    arrCookieStands[i].calcCookiesPerHour();
-    arrCookieStands[i].calcCookiesPerDay();
-    arrCookieStands[i].renderTableRow();
-  }
-};
-
 // Calculates the total cookies sold each hour, as well as the overall daily total
 var calcTotalCookiesSold = function() {
   console.log('Start of calcTotalCookiesSold'); // Logs when function starts for testing purposes
@@ -124,6 +111,7 @@ var renderTableHeader = function() {
 // Populates a footer row for the cookie-stand-table table in sale.html with total hourly and overall cookies sold
 var renderTableFooter = function() {
   calcTotalCookiesSold();
+
   var footerRow = document.createElement('tr');
   var tdElement = document.createElement('td');
 
@@ -143,23 +131,31 @@ var renderTableFooter = function() {
   tableCookieStands.appendChild(footerRow);
 };
 
-// Instantiates CookieStand objects
-new CookieStand('1st and Pike', 23, 65, 6.3);
-new CookieStand('SeaTac Airport', 3, 24, 1.2);
-new CookieStand('Seattle Center', 11, 38, 3.7);
-new CookieStand('Capitol Hill', 20, 38, 2.3);
-new CookieStand('Alki', 2, 16, 4.6);
-
 // Removes the "Total" row from cookie-stand-table
 var deleteTableRow = function() {
-  totalCookiesSold = 0; // Resets variable to 0, ensuring total doesn't double when renderTableFooter is called again
+  totalCookiesSold = 0; // Ensures total doesn't double when renderTableFooter is called again
 
   document.getElementById('cookie-stand-table').deleteRow(-1);
 };
 
+// Executes all object prototype functions for each instance of CookieStand
+var populateCookieStands = function() {
+  for (var i = 0; i < arrCookieStands.length; i++) {
+    // Logs when function starts for testing purposes
+    console.log('Start of populateCookieStands for: ' + arrCookieStands[i].standLocation);
 
+    arrCookieStands[i].generateCustomers();
+    arrCookieStands[i].calcCookiesPerHour();
+    arrCookieStands[i].calcCookiesPerDay();
+    arrCookieStands[i].renderTableRow();
+  }
+};
+
+// Stores the location of the form from sales.html
 var formSubmitElement = document.getElementById('new-stand-form');
 
+// Handles form submission to create a new CookieStand instance
+// Also appends cookie-stand-table with a new row reflecting the new CookieStand instance
 var handleFormSubmission = function(event) {
   event.preventDefault();
   console.log('The form was submitted!');
@@ -167,19 +163,26 @@ var handleFormSubmission = function(event) {
   var formElement = event.target;
   new CookieStand(formElement.location.value, formElement.minimum.value, formElement.maximum.value, formElement.cookies.value);
 
-  console.log(arrCookieStands);
+  deleteTableRow(); // Deletes "Total" row in table
 
-  deleteTableRow();
-
+  // Populates new CookieStand instance and appends row in table
   arrCookieStands[arrCookieStands.length - 1].generateCustomers();
   arrCookieStands[arrCookieStands.length - 1].calcCookiesPerHour();
   arrCookieStands[arrCookieStands.length - 1].calcCookiesPerDay();
   arrCookieStands[arrCookieStands.length - 1].renderTableRow();
 
-  renderTableFooter();
+  renderTableFooter(); // Creates new "Total" row - including data from new CookieStand instance
 };
 
+// Listens for user to submit form to create new CookieStand instance
 formSubmitElement.addEventListener('submit', handleFormSubmission);
+
+// Instantiates CookieStand objects
+new CookieStand('1st and Pike', 23, 65, 6.3);
+new CookieStand('SeaTac Airport', 3, 24, 1.2);
+new CookieStand('Seattle Center', 11, 38, 3.7);
+new CookieStand('Capitol Hill', 20, 38, 2.3);
+new CookieStand('Alki', 2, 16, 4.6);
 
 // Executes functions to populate sales.html
 renderTableHeader();
