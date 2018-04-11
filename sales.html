@@ -18,10 +18,10 @@
     <section>
       <form id="new-stand-form">
         <fieldset>
-          <label for="location">Location</label><input type="text" placeholder="store location" id="input-stand" name="location" />
-          <label for="minimum">Min. Cust/Hour</label><input type="number" id="min-customers" name="minimum" min="0" />
-          <label for="maximum">Max. Cust/Hour</label><input type="number" id="max-customers" name="maximum" min="0" />
-          <label for="cookie-num">Avg. Cookies/Cust</label><input type="number" id="avg-cookies" name="cookies" step="0.1" min="0" />
+          <label for="location">Location</label><input type="text" placeholder="store location" id="input-stand" name="location" required />
+          <label for="minimum">Min. Cust/Hour</label><input type="number" id="min-customers" name="minimum" min="0" required />
+          <label for="maximum">Max. Cust/Hour</label><input type="number" id="max-customers" name="maximum" min="0" required />
+          <label for="cookie-num">Avg. Cookies/Cust</label><input type="number" id="avg-cookies" name="cookies" step="0.1" min="0" required />
           <input type="submit" id="form-submit" />
         </fieldset>
       </form>
