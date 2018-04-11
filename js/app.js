@@ -2,10 +2,11 @@
 
 // Declares global variables
 var operatingHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
-var arrCookiesStands = []; // Array to hold each CookieStand object
+var arrCookieStands = []; // Array to hold each CookieStand object
 var arrSalesColumnTotals = []; // Array to hold total of cookies sold per cookie-stand-table columns
-var tableCookieStands = document.getElementById('cookie-stand-table');
 var totalCookiesSold = 0;
+
+var tableCookieStands = document.getElementById('cookie-stand-table');
 
 // Declares the CookieStand Constuctor
 function CookieStand(standLocation, minCustHourly, maxCustHourly, avgCookiesPerCust) {
@@ -16,7 +17,7 @@ function CookieStand(standLocation, minCustHourly, maxCustHourly, avgCookiesPerC
   this.arrCustomersPerHour = [];
   this.arrHourlyCookieSales = [];
   this.dailyCookiesSold = 0;
-  arrCookiesStands.push(this);
+  arrCookieStands.push(this);
 }
 
 // Generates a random number of customers - fills arrCustomersPerHour array
@@ -69,14 +70,14 @@ CookieStand.prototype.renderTableRow = function() {
 
 // Executes all object prototype functions for each instance of CookieStand
 var populateCookieStands = function() {
-  for (var i = 0; i < arrCookiesStands.length; i++) {
+  for (var i = 0; i < arrCookieStands.length; i++) {
     // Logs when function starts for testing purposes
-    console.log('Start of populateCookieStands for: ' + arrCookiesStands[i].standLocation);
+    console.log('Start of populateCookieStands for: ' + arrCookieStands[i].standLocation);
 
-    arrCookiesStands[i].generateCustomers();
-    arrCookiesStands[i].calcCookiesPerHour();
-    arrCookiesStands[i].calcCookiesPerDay();
-    arrCookiesStands[i].renderTableRow();
+    arrCookieStands[i].generateCustomers();
+    arrCookieStands[i].calcCookiesPerHour();
+    arrCookieStands[i].calcCookiesPerDay();
+    arrCookieStands[i].renderTableRow();
   }
 };
 
@@ -87,8 +88,8 @@ var calcTotalCookiesSold = function() {
   for (var i = 0; i < operatingHours.length; i++) {
     var tempTotalCookies = 0;
 
-    for (var j = 0; j < arrCookiesStands.length; j++) {
-      tempTotalCookies += arrCookiesStands[j].arrHourlyCookieSales[i];
+    for (var j = 0; j < arrCookieStands.length; j++) {
+      tempTotalCookies += arrCookieStands[j].arrHourlyCookieSales[i];
     }
 
     arrSalesColumnTotals[i] = tempTotalCookies;
@@ -148,6 +149,20 @@ new CookieStand('SeaTac Airport', 3, 24, 1.2);
 new CookieStand('Seattle Center', 11, 38, 3.7);
 new CookieStand('Capitol Hill', 20, 38, 2.3);
 new CookieStand('Alki', 2, 16, 4.6);
+
+var formSubmitElement = document.getElementById('new-stand-form');
+
+var handleFormSubmission = function(event) {
+  event.preventDefault();
+  console.log('The form was submitted!');
+
+  var formElement = event.target;
+  new CookieStand(formElement.location.value, formElement.minimum.value, formElement.maximum.value, formElement.cookies.value);
+
+  arrCookieStands[arrCookieStands.length - 1].renderTableRow();
+};
+
+formSubmitElement.addEventListener('submit', handleFormSubmission);
 
 // Executes functions to populate sales.html
 renderTableHeader();

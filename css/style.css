@@ -57,3 +57,6 @@ ul li {
   font-size: 20px;
   padding-left: 10px;
 }
+form * {
+  display: block;
+}
