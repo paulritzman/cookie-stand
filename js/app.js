@@ -1,225 +1,155 @@
 'use strict';
 
+// Declares global variables
 var operatingHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
+var arrCookiesStands = [];
+var arrSalesColumnTotals = [];
+var tableCookieStands = document.getElementById('cookie-stand-table');
+var totalCookiesSold = 0;
 
-// Creates object to represent the 1st and Pike cookie stand
-var storeFirstPike = {
-  minCustHourly: 23,
-  maxCustHourly: 65,
-  avgCookiesPerCust: 6.3,
-  arrHourlyCookieSales: [],
-  dailyCookiesSold: 0,
-  generateCustomers: function() { // Generates a random number of customers
-    return Math.random() * (this.maxCustHourly - this.minCustHourly) + this.minCustHourly;
-  },
-  calcCookiesPerHour: function() { // Calculates number of cookies sold each hour - rounded to whole number
-    for (var i = 0; i < operatingHours.length; i++) {
-      this.arrHourlyCookieSales.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
-      console.log('FirstPike - ' + operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
-    }
-  },
-  calcCookiesPerDay: function() { // Calculates total number of cookies sold that day
-    for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
-      this.dailyCookiesSold += this.arrHourlyCookieSales[i];
-      console.log('FirstPike - ' + (this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
-    }
-  },
-  renderFirstPike: function() { // Writes the number of cookies sold each hour to sales.html as <li> elements
-    // Executes both methods to instantiate each property
-    this.calcCookiesPerHour();
-    this.calcCookiesPerDay();
+// Declares the CookieStand Constuctor
+function CookieStand(standLocation, minCustHourly, maxCustHourly, avgCookiesPerCust) {
+  this.standLocation = standLocation;
+  this.minCustHourly = minCustHourly;
+  this.maxCustHourly = maxCustHourly;
+  this.avgCookiesPerCust = avgCookiesPerCust;
+  this.arrCustomersPerHour = [];
+  this.arrHourlyCookieSales = [];
+  this.dailyCookiesSold = 0;
+  arrCookiesStands.push(this);
+}
 
-    var ulElement = document.getElementById('first-pike');
-
-    // Writes number of cookies sold each hour
-    for (var i = 0; i < operatingHours.length; i++) {
-      var liElement = document.createElement('li');
-      liElement.textContent = operatingHours[i] + ': ' + this.arrHourlyCookieSales[i] + ' cookies';
-      ulElement.appendChild(liElement);
-    }
-
-    // Writes total number of cookies sold that day
-    liElement = document.createElement('li');
-    liElement.textContent = 'Total: ' + this.dailyCookiesSold + ' cookies';
-    ulElement.appendChild(liElement);
+// Generates a random number of customers - fills arrCustomersPerHour array
+CookieStand.prototype.generateCustomers = function() {
+  for (var i = 0; i < operatingHours.length; i++) {
+    this.arrCustomersPerHour.push(Math.round(Math.random() * (this.maxCustHourly - this.minCustHourly) + this.minCustHourly));
   }
 };
 
-// Creates object to represent the SeaTac Airport cookie stand
-var storeSeaTacAirport = {
-  minCustHourly: 3,
-  maxCustHourly: 24,
-  avgCookiesPerCust: 1.2,
-  arrHourlyCookieSales: [],
-  dailyCookiesSold: 0,
-  generateCustomers: function() { // Generates a random number of customers
-    return Math.random() * (this.maxCustHourly - this.minCustHourly) + this.minCustHourly;
-  },
-  calcCookiesPerHour: function() { // Calculates number of cookies sold each hour - rounded to whole number
-    for (var i = 0; i < operatingHours.length; i++) {
-      this.arrHourlyCookieSales.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
-      console.log('SeaTac - ' + operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
-    }
-  },
-  calcCookiesPerDay: function() { // Calculates total number of cookies sold that day
-    for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
-      this.dailyCookiesSold += this.arrHourlyCookieSales[i];
-      console.log('SeaTac - ' + (this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
-    }
-  },
-  renderSeaTacAirport: function() { // Writes the number of cookies sold each hour to sales.html as <li> elements
-    // Executes both methods to instantiate each property
-    this.calcCookiesPerHour();
-    this.calcCookiesPerDay();
+// Calculates number of cookies sold each hour - fills arrHourlyCookiesSold array
+CookieStand.prototype.calcCookiesPerHour = function() {
+  for (var i = 0; i < this.arrCustomersPerHour.length; i++) {
+    this.arrHourlyCookieSales.push(Math.round(this.arrCustomersPerHour[i] * this.avgCookiesPerCust));
 
-    var ulElement = document.getElementById('seatac-airport');
-
-    // Writes number of cookies sold each hour
-    for (var i = 0; i < operatingHours.length; i++) {
-      var liElement = document.createElement('li');
-      liElement.textContent = operatingHours[i] + ': ' + this.arrHourlyCookieSales[i] + ' cookies';
-      ulElement.appendChild(liElement);
-    }
-
-    // Writes total number of cookies sold that day
-    liElement = document.createElement('li');
-    liElement.textContent = 'Total: ' + this.dailyCookiesSold + ' cookies';
-    ulElement.appendChild(liElement);
+    // console.log test below
+    console.log(this.arrCustomersPerHour[i] + ' customers bought ' + this.arrHourlyCookieSales[i] + ' cookies this hour');
   }
 };
 
-// Creates object to represent the Seattle Center cookie stand
-var storeSeattleCenter = {
-  minCustHourly: 11,
-  maxCustHourly: 38,
-  avgCookiesPerCust: 3.7,
-  arrHourlyCookieSales: [],
-  dailyCookiesSold: 0,
-  generateCustomers: function() { // Generates a random number of customers
-    return Math.random() * (this.maxCustHourly - this.minCustHourly) + this.minCustHourly;
-  },
-  calcCookiesPerHour: function() { // Calculates number of cookies sold each hour - rounded to whole number
-    for (var i = 0; i < operatingHours.length; i++) {
-      this.arrHourlyCookieSales.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
-      console.log('SeattleCenter - ' + operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
-    }
-  },
-  calcCookiesPerDay: function() { // Calculates total number of cookies sold that day
-    for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
-      this.dailyCookiesSold += this.arrHourlyCookieSales[i];
-      console.log('SeattleCenter - ' + (this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
-    }
-  },
-  renderSeattleCenter: function() { // Writes the number of cookies sold each hour to sales.html as <li> elements
-    // Executes both methods to instantiate each property
-    this.calcCookiesPerHour();
-    this.calcCookiesPerDay();
+// Calculates total number of cookies sold per day
+CookieStand.prototype.calcCookiesPerDay = function() {
+  for (var i = 0; i < this.arrCustomersPerHour.length; i++) {
+    this.dailyCookiesSold += this.arrHourlyCookieSales[i];
 
-    var ulElement = document.getElementById('seattle-center');
-
-    // Writes number of cookies sold each hour
-    for (var i = 0; i < operatingHours.length; i++) {
-      var liElement = document.createElement('li');
-      liElement.textContent = operatingHours[i] + ': ' + this.arrHourlyCookieSales[i] + ' cookies';
-      ulElement.appendChild(liElement);
-    }
-
-    // Writes total number of cookies sold that day
-    liElement = document.createElement('li');
-    liElement.textContent = 'Total: ' + this.dailyCookiesSold + ' cookies';
-    ulElement.appendChild(liElement);
+    // console.log test below
+    console.log((this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
   }
 };
 
-// Creates object to represent the Capitol Hill cookie stand
-var storeCapitolHill = {
-  minCustHourly: 20,
-  maxCustHourly: 38,
-  avgCookiesPerCust: 2.3,
-  arrHourlyCookieSales: [],
-  dailyCookiesSold: 0,
-  generateCustomers: function() { // Generates a random number of customers
-    return Math.random() * (this.maxCustHourly - this.minCustHourly) + this.minCustHourly;
-  },
-  calcCookiesPerHour: function() { // Calculates number of cookies sold each hour - rounded to whole number
-    for (var i = 0; i < operatingHours.length; i++) {
-      this.arrHourlyCookieSales.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
-      console.log('CapitolHill - ' + operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
-    }
-  },
-  calcCookiesPerDay: function() { // Calculates total number of cookies sold that day
-    for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
-      this.dailyCookiesSold += this.arrHourlyCookieSales[i];
-      console.log('CapitolHill - ' + (this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
-    }
-  },
-  renderCapitolHill: function() { // Writes the number of cookies sold each hour to sales.html as <li> elements
-    // Executes both methods to instantiate each property
-    storeCapitolHill.calcCookiesPerHour();
-    storeCapitolHill.calcCookiesPerDay();
+// Populates a row for the cookie-stand-table table in sales.html with the stand location and hourly sales figures
+CookieStand.prototype.renderHourlySales = function() {
+  var trElement = document.createElement('tr');
+  var tdElement = document.createElement('td');
 
-    var ulElement = document.getElementById('capitol-hill');
+  tdElement.textContent = this.standLocation;
+  trElement.appendChild(tdElement);
 
-    // Writes number of cookies sold each hour
-    for (var i = 0; i < operatingHours.length; i++) {
-      var liElement = document.createElement('li');
-      liElement.textContent = operatingHours[i] + ': ' + this.arrHourlyCookieSales[i] + ' cookies';
-      ulElement.appendChild(liElement);
+  for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
+    tdElement = document.createElement('td');
+    tdElement.textContent = this.arrHourlyCookieSales[i];
+    trElement.appendChild(tdElement);
+  }
+
+  tdElement = document.createElement('td');
+  tdElement.textContent = this.dailyCookiesSold;
+  trElement.appendChild(tdElement);
+
+  tableCookieStands.appendChild(trElement);
+};
+
+// Calculates the total cookies sold each hour, as well as the overall daily total
+var calcTotalCookiesSold = function() {
+  console.log('Start of calcTotalCookiesSold'); // Logs when function starts for testing purposes
+
+  for (var i = 0; i < operatingHours.length; i++) {
+    var tempTotalCookies = 0;
+
+    for (var j = 0; j < arrCookiesStands.length; j++) {
+      tempTotalCookies += arrCookiesStands[j].arrHourlyCookieSales[i];
     }
 
-    // Writes total number of cookies sold that day
-    liElement = document.createElement('li');
-    liElement.textContent = 'Total: ' + this.dailyCookiesSold + ' cookies';
-    ulElement.appendChild(liElement);
+    arrSalesColumnTotals[i] = tempTotalCookies;
+    totalCookiesSold += tempTotalCookies;
+
+    // console.log test below
+    console.log((totalCookiesSold - tempTotalCookies) + ' + ' + tempTotalCookies + ' = ' + totalCookiesSold);
   }
 };
 
-// Creates object to represent the Alki cookie stand
-var storeAlki = {
-  minCustHourly: 2,
-  maxCustHourly: 16,
-  avgCookiesPerCust: 4.6,
-  arrHourlyCookieSales: [],
-  dailyCookiesSold: 0,
-  generateCustomers: function() { // Generates a random number of customers
-    return Math.random() * (this.maxCustHourly - this.minCustHourly) + this.minCustHourly;
-  },
-  calcCookiesPerHour: function() { // Calculates number of cookies sold each hour - rounded to whole number
-    for (var i = 0; i < operatingHours.length; i++) {
-      this.arrHourlyCookieSales.push(Math.round(this.generateCustomers() * this.avgCookiesPerCust));
-      console.log('Alki - ' + operatingHours[i] + ': ' + this.arrHourlyCookieSales[i]);
-    }
-  },
-  calcCookiesPerDay: function() { // Calculates total number of cookies sold that day
-    for (var i = 0; i < this.arrHourlyCookieSales.length; i++) {
-      this.dailyCookiesSold += this.arrHourlyCookieSales[i];
-      console.log('Alki - ' + (this.dailyCookiesSold - this.arrHourlyCookieSales[i]) + ' + ' + this.arrHourlyCookieSales[i] + ' = ' + this.dailyCookiesSold);
-    }
-  },
-  renderAlki: function() { // Writes the number of cookies sold each hour to sales.html as <li> elements
-    // Executes both methods to instantiate each property
-    this.calcCookiesPerHour();
-    this.calcCookiesPerDay();
+// Executes all object prototype functions for each instance of CookieStand
+var populateCookieStands = function() {
+  for (var i = 0; i < arrCookiesStands.length; i++) {
+    // Logs when function starts for testing purposes
+    console.log('Start of populateCookieStands for: ' + arrCookiesStands[i].standLocation);
 
-    var ulElement = document.getElementById('alki');
-
-    // Writes number of cookies sold each hour
-    for (var i = 0; i < operatingHours.length; i++) {
-      var liElement = document.createElement('li');
-      liElement.textContent = operatingHours[i] + ': ' + this.arrHourlyCookieSales[i] + ' cookies';
-      ulElement.appendChild(liElement);
-    }
-
-    // Writes total number of cookies sold that day
-    liElement = document.createElement('li');
-    liElement.textContent = 'Total: ' + this.dailyCookiesSold + ' cookies';
-    ulElement.appendChild(liElement);
+    arrCookiesStands[i].generateCustomers();
+    arrCookiesStands[i].calcCookiesPerHour();
+    arrCookiesStands[i].calcCookiesPerDay();
+    arrCookiesStands[i].renderHourlySales();
   }
 };
 
-// Calls each objects render method to write the data to the document
-storeFirstPike.renderFirstPike();
-storeSeaTacAirport.renderSeaTacAirport();
-storeSeattleCenter.renderSeattleCenter();
-storeCapitolHill.renderCapitolHill();
-storeAlki.renderAlki();
+// Populates a header row for the cookie-stand-table table in sale.html with cookie stand operating hours
+var renderTableHeader = function() {
+  var headerRow = document.createElement('tr');
+  var thElement = document.createElement('th');
+
+  thElement.textContent = '';
+  headerRow.appendChild(thElement);
+
+  for (var i = 0; i < operatingHours.length; i++) {
+    thElement = document.createElement('th');
+    thElement.textContent = operatingHours[i];
+    headerRow.appendChild(thElement);
+  }
+
+  thElement = document.createElement('th');
+  thElement.textContent = 'Total';
+  headerRow.appendChild(thElement);
+
+  tableCookieStands.appendChild(headerRow);
+};
+
+// Populates a footer row for the cookie-stand-table table in sale.html with total hourly and overall cookies sold
+var renderTableFooter = function() {
+  calcTotalCookiesSold();
+  var footerRow = document.createElement('tr');
+  var tdElement = document.createElement('td');
+
+  tdElement.textContent = 'Total: ';
+  footerRow.appendChild(tdElement);
+
+  for (var i = 0; i < operatingHours.length; i++) {
+    tdElement = document.createElement('td');
+    tdElement.textContent = arrSalesColumnTotals[i];
+    footerRow.appendChild(tdElement);
+  }
+
+  tdElement = document.createElement('td');
+  tdElement.textContent = totalCookiesSold;
+  footerRow.appendChild(tdElement);
+
+  tableCookieStands.appendChild(footerRow);
+};
+
+// Instantiates CookieStand objects
+new CookieStand('1st and Pike', 23, 65, 6.3);
+new CookieStand('SeaTac Airport', 3, 24, 1.2);
+new CookieStand('Seattle Center', 11, 38, 3.7);
+new CookieStand('Capitol Hill', 20, 38, 2.3);
+new CookieStand('Alki', 2, 16, 4.6);
+
+// Executes functions to populate sales.html
+renderTableHeader();
+populateCookieStands();
+renderTableFooter();

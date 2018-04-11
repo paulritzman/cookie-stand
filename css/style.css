@@ -46,3 +46,9 @@ ul li {
   font-size: 20px;
   padding-left: 10px;
 }
+#cookie-stand-table {
+  border: 1px solid black;
+}
+tr td {
+  border: 1px solid black;
+}
