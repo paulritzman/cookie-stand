@@ -23,7 +23,7 @@ header nav {
   width: 50%;
   margin: 10px auto;
   padding: 5px 0;
-  line-height: 1.3em;
+  line-height: 1em;
   text-align: center;
 }
 header h2 {
@@ -34,6 +34,21 @@ header li {
   display: inline;
   font-size: 20px;
   padding: 0px 5px;
+}
+section {
+  margin: 0px 100px;
+}
+section table {
+  border: 5px solid red;
+
+  float: left;
+  width: 200px;
+}
+section p{
+  border: 5px solid yellow;
+
+  display: block;
+  float: right;
 }
 
 
