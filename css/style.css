@@ -1,5 +1,10 @@
 body {
-  background: lightblue;
+  background: white;
+}
+div.page-header {
+  background-color: lightblue;
+  border-top: 40px solid lightblue;
+  border-bottom: 5px solid lightblue;
 }
 section.hours-contact-info {
   font-family: 'Handlee', cursive;
@@ -21,7 +26,7 @@ header {
   font-size: 1.5em;
   font-weight: bold;
   line-height: 1.5em;
-  margin: 40px auto 15px auto;
+  margin: auto 0px;
   text-align: center;
 }
 header img {
@@ -36,7 +41,7 @@ header nav {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   width: 50%;
-  margin: 10px auto;
+  margin: 10px auto 5px auto;
   padding: 5px 0;
   line-height: 1em;
   text-align: center;
