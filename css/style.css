@@ -74,6 +74,21 @@ main section div p {
   height: 275px;
   overflow: scroll;
 }
+main section nav {
+  background: yellow;
+
+  float: left;
+  width: 400px;
+  overflow: scroll;
+  white-space: nowrap;
+}
+main section nav li {
+  display: inline-block;
+}
+main section nav img {
+  height: 50px;
+  width: 100px; 
+}
 
 
 
