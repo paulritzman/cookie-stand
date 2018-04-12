@@ -36,17 +36,17 @@ header li {
   padding: 0px 5px;
 }
 section {
-  margin: 0px 100px;
+  font-family: 'Handlee', cursive;
+  font-size: 20px;
+  line-height: 1.2em;
+  margin: 0px 50px;
+  text-align: center;
 }
 section table {
-  border: 5px solid red;
-
   float: left;
-  width: 200px;
+  width: 250px;
 }
 section p{
-  border: 5px solid yellow;
-
   display: block;
   float: right;
 }
