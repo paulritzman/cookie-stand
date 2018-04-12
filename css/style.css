@@ -59,6 +59,7 @@ main {
 main section img {
   float: left;
   margin-right: 30px;
+  width: 400px;
 }
 main section div {
   float: left;
