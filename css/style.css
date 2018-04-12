@@ -3,18 +3,31 @@ body {
 }
 header {
   font-family: 'Amatic SC', cursive;
-  margin-top: 40px;
+  font-size: 1.5em;
   line-height: 1.5em;
-}
-main {
-  float: left;
-  margin: 10px 25px;
+  margin: 40px auto 15px auto;
   text-align: center;
 }
-section {
-  float: left;
-  margin: 33px 25px;
+header img {
+  display: block;
+  width: 160px;
+  margin: 0 auto;
 }
+header h1 {
+  display: inline-block;
+}
+
+
+
+
+/*
+
+
+aside {
+  float: left;
+  margin: 25px 25px;
+}
+
 aside {
   position: absolute;
   top: 25px;
@@ -25,6 +38,7 @@ aside {
   padding: 5px 15px 15px 15px;
   line-height: 10px;
 }
+
 nav {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
@@ -77,3 +91,6 @@ form * {
 .open-hours {
   float: left;
 }
+
+
+*/
