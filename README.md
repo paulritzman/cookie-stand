@@ -12,6 +12,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 
 * Custom Google fonts - [Amatic](https://fonts.googleapis.com/css?family=Amatic+SC:400,700)
                       - [Handlee](https://fonts.googleapis.com/css?family=Handlee)
+                      
+* Lipsum - [Lorem Ipsum](https://www.lipsum.com/)
 
 ## Acknowledgements
 
