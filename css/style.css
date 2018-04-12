@@ -7,7 +7,13 @@ header {
   line-height: 1.5em;
 }
 main {
+  float: left;
+  margin: 10px 25px;
   text-align: center;
+}
+section {
+  float: left;
+  margin: 33px 25px;
 }
 aside {
   position: absolute;

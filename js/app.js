@@ -47,6 +47,25 @@ CookieStand.prototype.calcCookiesPerDay = function() {
   }
 };
 
+// Calculates the total cookies sold each hour, as well as the overall daily total
+var calcTotalCookiesSold = function() {
+  console.log('Start of calcTotalCookiesSold'); // Logs when function starts for testing purposes
+
+  for (var i = 0; i < operatingHours.length; i++) {
+    var tempTotalCookies = 0;
+
+    for (var j = 0; j < arrCookieStands.length; j++) {
+      tempTotalCookies += arrCookieStands[j].arrHourlyCookieSales[i];
+    }
+
+    arrSalesColumnTotals[i] = tempTotalCookies;
+    totalCookiesSold += tempTotalCookies;
+
+    // console.log test below
+    console.log((totalCookiesSold - tempTotalCookies) + ' + ' + tempTotalCookies + ' = ' + totalCookiesSold);
+  }
+};
+
 // Populates a row for the cookie-stand-table table in sales.html with the stand location and hourly sales figures
 CookieStand.prototype.renderTableRow = function() {
   var trElement = document.createElement('tr');
@@ -66,25 +85,6 @@ CookieStand.prototype.renderTableRow = function() {
   trElement.appendChild(tdElement);
 
   tableCookieStands.appendChild(trElement);
-};
-
-// Calculates the total cookies sold each hour, as well as the overall daily total
-var calcTotalCookiesSold = function() {
-  console.log('Start of calcTotalCookiesSold'); // Logs when function starts for testing purposes
-
-  for (var i = 0; i < operatingHours.length; i++) {
-    var tempTotalCookies = 0;
-
-    for (var j = 0; j < arrCookieStands.length; j++) {
-      tempTotalCookies += arrCookieStands[j].arrHourlyCookieSales[i];
-    }
-
-    arrSalesColumnTotals[i] = tempTotalCookies;
-    totalCookiesSold += tempTotalCookies;
-
-    // console.log test below
-    console.log((totalCookiesSold - tempTotalCookies) + ' + ' + tempTotalCookies + ' = ' + totalCookiesSold);
-  }
 };
 
 // Populates a header row for the cookie-stand-table table in sale.html with cookie stand operating hours
