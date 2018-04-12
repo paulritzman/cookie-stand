@@ -4,6 +4,7 @@ body {
 header {
   font-family: 'Amatic SC', cursive;
   font-size: 1.5em;
+  font-weight: bold;
   line-height: 1.5em;
   margin: 40px auto 15px auto;
   text-align: center;
@@ -16,8 +17,24 @@ header img {
 header h1 {
   display: inline-block;
 }
-
-
+header nav {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 50%;
+  margin: 10px auto;
+  padding: 5px 0;
+  line-height: 1.3em;
+  text-align: center;
+}
+header h2 {
+  font-family: 'Handlee', cursive;
+  font-weight: normal;
+}
+header li {
+  display: inline;
+  font-size: 20px;
+  padding: 0px 5px;
+}
 
 
 /*
