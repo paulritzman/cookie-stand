@@ -2,11 +2,9 @@ body {
   background: lightblue;
 }
 header {
-  text-align: center;
-  font-size: 12px;
   font-family: 'Amatic SC', cursive;
   margin-top: 40px;
-  line-height: 1em;
+  line-height: 1.5em;
 }
 main {
   text-align: center;
@@ -24,11 +22,11 @@ aside {
 nav {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  margin: auto;
   width: 50%;
-  padding: 0px;
+  margin: 10px auto;
+  padding: 5px 0;
+  line-height: 1.3em;
   text-align: center;
-  line-height: 10px;
 }
 table {
   background-color: lightgrey;
@@ -38,11 +36,18 @@ table {
   line-height: 20px;
   margin: 0 auto;
 }
+h1 {
+  text-align: center;
+  font-size: 25px;
+  line-height: 1em;
+}
 h2 {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 img {
-  width: 125px;
+  width: 145px;
+  display: block;
+  margin: auto;
 }
 tr td {
   background-color: white;
@@ -59,4 +64,10 @@ ul li {
 }
 form * {
   display: block;
+}
+.open-hours {
+  float: left;
+}
+.open-hours {
+  float: left;
 }
