@@ -65,6 +65,9 @@ main section img {
   margin-right: 30px;
   width: 400px;
 }
+.featured-image {
+  box-shadow: 3px 5px 5px #C7AFBD;
+}
 main section div {
   float: left;
   width: calc(50% - 30px);
