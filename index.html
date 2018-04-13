@@ -53,6 +53,34 @@
           </ul>
         </nav>
       </section>
+      <form id="customer-selection">
+        <fieldset>
+          <legend>Order:</legend>
+          <label for="cookie-check">Salmon Cookie:</label>
+          <input type="checkbox" id="cookie-checkbox" name="cookie-check" value="Salmon Cookie"  />
+          <label for="tshirt-check">T-Shirt:</label>
+          <input type="checkbox" id="tshirt-checkbox" name="tshirt-check" value="T-Shirt" />
+          <label for="amount">How many would you like?</label>
+          <input type="number" id="amount-desired" name="amount" step="1" placeholder="0" min="0"/>
+        </fieldset>
+        <fieldset>
+          <legend>Billing Information:</legend>
+          <label for="customer-name">Name for order:</label>
+          <input type="text" id="customer-name" name="customer-name" placeholder="first and last name" />
+          <label for="customer-address">Billing Address:</label>
+          <input type="text" id="customer-address" name="customer-address" placeholder="street address">
+        </fieldset>
+        <fieldset>
+          <legend>Payment Details:</legend>
+          <label for="credit-card">Visa</label>
+          <input type="radio" id="visa-card" name="credit-card"/>
+          <label for="credit-card">Master</label>
+          <input type="radio" id="master-card" name="credit-card"/>
+          <label for="credit-card">Discover</label>
+          <input type="radio" id="discover-card" name="credit-card"/>
+        </fieldset>
+        <input type="submit" id="submit-order" value="Submit Order">
+      </form>
     </main>
   </body>
 </html>
