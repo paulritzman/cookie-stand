@@ -127,3 +127,17 @@ main article h3 {
   font-size: 20px;
   margin-bottom: 8px;
 }
+main article figure {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 5px 0px;
+}
+main article figure img {
+  display: block;
+  height: 160px;
+  margin: 0 auto;
+}
+main article figure figcaption {
+  font-size: 12px;
+  text-align: center;
+}
