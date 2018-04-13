@@ -95,7 +95,7 @@ main section nav img {
   width: 100px; 
 }
 #customer-selection {
-  background-color: salmon;
+  background-color: #F8F2DA;
   border-radius: 15px;
   clear: both;
   float: left;
@@ -108,80 +108,8 @@ fieldset {
 #submit-order {
   margin: 10px;
 }
-
-
-
-/*
-
-
-aside {
+main article {
   float: left;
-  margin: 25px 25px;
+  margin: 80px 0px 0px 30px;
+  width: 313px;
 }
-
-aside {
-  position: absolute;
-  top: 25px;
-  left: 25px;
-  border: 2px dashed black;
-  width: 200px;
-  text-align: center;
-  padding: 5px 15px 15px 15px;
-  line-height: 10px;
-}
-
-nav {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  width: 50%;
-  margin: 10px auto;
-  padding: 5px 0;
-  line-height: 1.3em;
-  text-align: center;
-}
-table {
-  background-color: lightgrey;
-  border: 2px solid black;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 20px;
-  margin: 0 auto;
-}
-h1 {
-  text-align: center;
-  font-size: 25px;
-  line-height: 1em;
-}
-h2 {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-img {
-  width: 145px;
-  display: block;
-  margin: auto;
-}
-tr td {
-  background-color: white;
-  border-radius: 50%; 
-  padding: 2px;
-  line-height: 2em;
-}
-ul li {
-  display: inline;
-  font-family: 'Amatic SC', cursive;
-  font-weight: bold;
-  font-size: 20px;
-  padding-left: 10px;
-}
-form * {
-  display: block;
-}
-.open-hours {
-  float: left;
-}
-.open-hours {
-  float: left;
-}
-
-
-*/
