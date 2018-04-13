@@ -102,9 +102,12 @@ main section nav img {
   margin-top: 40px;
 }
 fieldset {
+  margin-bottom: 10px;
   padding: 10px;
 }
-
+#submit-order {
+  margin: 10px;
+}
 
 
 
