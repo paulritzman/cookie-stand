@@ -15,6 +15,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
                       
 * Lipsum - [Lorem Ipsum](https://www.lipsum.com/)
 
+* Colorcombos - [ColorCombo132](https://www.colorcombos.com/color-schemes/132/ColorCombo132.html)
+
 ## Acknowledgements
 
 * Billie Thompson - README-Template.md - [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)

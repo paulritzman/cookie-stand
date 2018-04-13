@@ -65,6 +65,9 @@ main section img {
   margin-right: 30px;
   width: 400px;
 }
+.featured-image {
+  box-shadow: 3px 5px 5px #C7AFBD;
+}
 main section div {
   float: left;
   width: calc(50% - 30px);
@@ -95,7 +98,7 @@ main section nav img {
   width: 100px; 
 }
 #customer-selection {
-  background-color: salmon;
+  background-color: #F8F2DA;
   border-radius: 15px;
   clear: both;
   float: left;
@@ -108,80 +111,55 @@ fieldset {
 #submit-order {
   margin: 10px;
 }
-
-
-
-/*
-
-
-aside {
+main article {
   float: left;
-  margin: 25px 25px;
+  margin: 40px 0px 0px 30px;
+  width: 313px;
 }
-
-aside {
-  position: absolute;
-  top: 25px;
-  left: 25px;
-  border: 2px dashed black;
-  width: 200px;
+main article h2 {
+  background-color: #484452;
+  border-radius: 15px;
+  color: white;
+  font-size: 20px;
+  margin: auto auto 20px auto;
+  padding: 10px;
   text-align: center;
-  padding: 5px 15px 15px 15px;
-  line-height: 10px;
+  width: 150px;
 }
-
-nav {
+main article h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+main article figure {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  width: 50%;
-  margin: 10px auto;
-  padding: 5px 0;
-  line-height: 1.3em;
-  text-align: center;
+  margin: 5px 0px;
 }
-table {
-  background-color: lightgrey;
-  border: 2px solid black;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 20px;
+main article figure img {
+  display: block;
+  height: 160px;
   margin: 0 auto;
 }
-h1 {
+main article figure figcaption {
+  font-size: 12px;
   text-align: center;
-  font-size: 25px;
-  line-height: 1em;
 }
-h2 {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+div.clear-both {
+  clear: both;
 }
-img {
-  width: 145px;
-  display: block;
-  margin: auto;
+footer {
+  background-color: #484452;
 }
-tr td {
-  background-color: white;
-  border-radius: 50%; 
-  padding: 2px;
-  line-height: 2em;
+footer nav {
+  line-height: 50px;
+  text-align: center;
 }
-ul li {
+footer li {
+  color: #DDECEF;
   display: inline;
-  font-family: 'Amatic SC', cursive;
-  font-weight: bold;
-  font-size: 20px;
-  padding-left: 10px;
+  margin: 0 40px;
 }
-form * {
-  display: block;
+a {
+  color: #DDECEF;
+  text-decoration: none;
 }
-.open-hours {
-  float: left;
-}
-.open-hours {
-  float: left;
-}
-
-
-*/
