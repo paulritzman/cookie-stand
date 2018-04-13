@@ -110,6 +110,20 @@ fieldset {
 }
 main article {
   float: left;
-  margin: 80px 0px 0px 30px;
+  margin: 40px 0px 0px 30px;
   width: 313px;
+}
+main article h2 {
+  background-color: #484452;
+  border-radius: 15px;
+  color: white;
+  font-size: 20px;
+  margin: auto auto 20px auto;
+  padding: 10px;
+  text-align: center;
+  width: 150px;
+}
+main article h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
 }
