@@ -54,5 +54,31 @@
         </nav>
       </section>
     </main>
+  <section>
+      <form id="customer-selection">
+        <fieldset>
+          <label for="cookie-checkbox">Salmon Cookie:</label>
+          <input type="checkbox" id="cookie-checkbox" name="cookie-check" value="Salmon Cookie"  />
+          <label for="tshirt-checkbox">T-Shirt:</label>
+          <input type="checkbox" id="tshirt-checkbox" name="tshirt-check" value="T-Shirt" />
+          <label for="amount-desired">How many would you like?</label>
+          <input type="number" id="amount-desired" name="amount" step="1" placeholder="0" min="0"/>
+        </fieldset>
+        <fieldset>
+          <label for="customer-name">Please enter the name on this order:</label>
+          <input type="text" id="customer-name" name="customer-name" placeholder="first and last name" />
+          <label for="customer-address">Billing Address:</label>
+          <input type="text" id="customer-address" name="customer-address" placeholder="street address">
+        </fieldset>
+        <fieldset>
+          <label for="visa-card">Visa</label>
+          <input type="radio" id="visa-card" name="visa"/>
+          <label for="master-card">Master</label>
+          <input type="radio" id="master-card" name="master-card"/>
+          <label for="discover-card">Discover</label>
+          <input type="radio" id="discover-card" name="discover"/>
+        </fieldset>
+      </form>
+    </section>
   </body>
 </html>
