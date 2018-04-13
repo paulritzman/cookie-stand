@@ -5,19 +5,34 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
   </head>
   <body>
-    <header>
-      <img src="img/salmon.png" alt="Salmon Logo">
-      <h1>Pat's Salmon Cookies</h1>
-    </header>
+    <div class="page-header">
+      <header>
+        <img src="img/salmon.png" alt="Salmon Logo">
+        <h1>Pat's Salmon Cookies</h1>
+        <nav>
+          <h2>Locations</h2>
+          <ul>
+            <li>First &amp; Pike</li>
+            <li>SeaTac Airport</li>
+            <li>Seattle Center</li>
+            <li>Capitol Hill</li>
+            <li>Alki</li>
+          </ul>
+        </nav>
+      </header>
+    </div>
     <main>
+      <a href="index.html">Back to storefront</a>
       <h1>Store Sales</h1>
       <table id="cookie-stand-table"></table>
     </main>
     <section>
       <form id="new-stand-form">
         <fieldset>
+          <legend>Add new cookie stand</legend>
           <label for="location">Location</label><input type="text" placeholder="store location" id="input-stand" name="location" required />
           <label for="minimum">Min. Cust/Hour</label><input type="number" id="min-customers" name="minimum" min="0" required />
           <label for="maximum">Max. Cust/Hour</label><input type="number" id="max-customers" name="maximum" min="0" required />

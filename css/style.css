@@ -97,7 +97,7 @@ main section nav img {
   height: 50px;
   width: 100px; 
 }
-#customer-selection {
+form {
   background-color: #F8F2DA;
   border-radius: 15px;
   clear: both;
@@ -159,7 +159,35 @@ footer li {
   display: inline;
   margin: 0 40px;
 }
-a {
+footer li a {
   color: #DDECEF;
   text-decoration: none;
+}
+main h1 {
+  font-family: 'Handlee', cursive;
+  font-size: 20px;
+}
+#cookie-stand-table {
+  background-color: #DDECEF;
+  border-radius: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+#cookie-stand-table tr:not(:first-child) {
+  text-align: right;
+}
+#cookie-stand-table tr td{
+  padding: 5px 10px;
+}
+#new-stand-form {
+  margin-left: 160px;
+}
+#new-stand-form legend {
+  font-family: 'Handlee', cursive;
+  font-size: 20px;
+}
+main a {
+  display: block;
+  float: right;
+  margin-right: 30px;
 }
