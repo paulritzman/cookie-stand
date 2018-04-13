@@ -148,7 +148,7 @@ main article figure figcaption {
   clear: both;
 }
 footer {
-  background-color: red;
+  background-color: #484452;
   margin-top: 40px;
 }
 footer nav {
@@ -156,5 +156,7 @@ footer nav {
   text-align: center;
 }
 footer li {
+  color: #DDECEF;
   display: inline;
+  margin: 0 40px;
 }
