@@ -144,3 +144,17 @@ main article figure figcaption {
   font-size: 12px;
   text-align: center;
 }
+.clear-both {
+  clear: both;
+}
+footer {
+  background-color: red;
+  margin-top: 40px;
+}
+footer nav {
+  line-height: 50px;
+  text-align: center;
+}
+footer li {
+  display: inline;
+}
