@@ -144,12 +144,11 @@ main article figure figcaption {
   font-size: 12px;
   text-align: center;
 }
-.clear-both {
+div.clear-both {
   clear: both;
 }
 footer {
   background-color: #484452;
-  margin-top: 40px;
 }
 footer nav {
   line-height: 50px;
@@ -159,4 +158,8 @@ footer li {
   color: #DDECEF;
   display: inline;
   margin: 0 40px;
+}
+a {
+  color: #DDECEF;
+  text-decoration: none;
 }
