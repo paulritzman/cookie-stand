@@ -18,6 +18,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 
 * Kirupa - [Handling Events for Many Elements](https://www.kirupa.com/html5/handling_events_for_many_elements.htm)
 
+* Dllu - [Capitol Hill Image](https://commons.wikimedia.org/wiki/File:High_rise_view_of_Capitol_Hill_at_night,_looking_east_from_Pine_and_9th.jpg) - [License](https://creativecommons.org/licenses/by-sa/4.0/legalcode)
+
 ## Acknowledgements
 
 * Billie Thompson - README-Template.md - [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
