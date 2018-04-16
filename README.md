@@ -10,12 +10,13 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 
 ## Resources
 
-* Custom Google fonts - [Amatic](https://fonts.googleapis.com/css?family=Amatic+SC:400,700)
-                      - [Handlee](https://fonts.googleapis.com/css?family=Handlee)
+* Custom Google fonts - [Amatic](https://fonts.googleapis.com/css?family=Amatic+SC:400,700), [Handlee](https://fonts.googleapis.com/css?family=Handlee)
                       
 * Lipsum - [Lorem Ipsum](https://www.lipsum.com/)
 
 * Colorcombos - [ColorCombo132](https://www.colorcombos.com/color-schemes/132/ColorCombo132.html)
+
+* Kirupa - [Handling Events for Many Elements](https://www.kirupa.com/html5/handling_events_for_many_elements.htm)
 
 ## Acknowledgements
 

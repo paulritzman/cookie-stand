@@ -4,7 +4,8 @@
 var imgChinookElement = document.getElementById('img-chinook-salmon');
 var imgCutterElement = document.getElementById('img-cutter');
 var imgFrostedCookieElement = document.getElementById('img-frosted-cookie');
-
+var imgFishElement = document.getElementById('img-fish');
+var imgFamilyElement = document.getElementById('img-family');
 
 var handleImageChange = function(event) {
   event.preventDefault();
@@ -16,9 +17,10 @@ var handleImageChange = function(event) {
   if (oldImage.getAttribute('src') !== clickedItem.getAttribute('src')) {
     oldImage.src = clickedItem.src;
   }
-
 };
 
 imgChinookElement.addEventListener('click', handleImageChange);
 imgCutterElement.addEventListener('click', handleImageChange);
 imgFrostedCookieElement.addEventListener('click', handleImageChange);
+imgFishElement.addEventListener('click', handleImageChange);
+imgFamilyElement.addEventListener('click', handleImageChange);
