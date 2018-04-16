@@ -113,8 +113,17 @@ fieldset {
 }
 main article {
   float: left;
-  margin: 40px 0px 0px 30px;
+  margin: 40px 0px 30px 30px;
   width: 313px;
+}
+main a {
+  display: block;
+  float: right;
+  margin-right: 30px;
+}
+main h1 {
+  font-family: 'Handlee', cursive;
+  font-size: 20px;
 }
 main article h2 {
   background-color: #484452;
@@ -163,15 +172,22 @@ footer li a {
   color: #DDECEF;
   text-decoration: none;
 }
-main h1 {
-  font-family: 'Handlee', cursive;
-  font-size: 20px;
+footer li a:hover {
+  color: #AAA;
 }
 #cookie-stand-table {
   background-color: #DDECEF;
   border-radius: 15px;
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
+}
+#cookie-stand-table tr:first-of-type {
+  background-color: #484452;
+  color: white;
+}
+#cookie-stand-table td:first-of-type {
+  background-color: #484452;
+  color: white;
 }
 #cookie-stand-table tr:not(:first-child) {
   text-align: right;
@@ -181,13 +197,9 @@ main h1 {
 }
 #new-stand-form {
   margin-left: 160px;
+  margin-bottom: 30px;
 }
 #new-stand-form legend {
   font-family: 'Handlee', cursive;
   font-size: 20px;
-}
-main a {
-  display: block;
-  float: right;
-  margin-right: 30px;
 }
