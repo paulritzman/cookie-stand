@@ -1,33 +1,24 @@
 'use strict';
 
+// mass image change
 var imgChinookElement = document.getElementById('img-chinook-salmon');
+var imgCutterElement = document.getElementById('img-cutter');
+var imgFrostedCookieElement = document.getElementById('img-frosted-cookie');
 
-var onChinookClick = function(event) {
+
+var handleImageChange = function(event) {
   event.preventDefault();
-  console.log('Chinook image clicked.');
+  console.log('An image from the nav bar was clicked.');
 
+  var clickedItem = event.target;
   var oldImage = document.getElementById('featured-image');
 
-  if (oldImage.getAttribute('src') !== 'img/chinook.jpg') {
-    oldImage.src = 'img/chinook.jpg';
+  if (oldImage.getAttribute('src') !== clickedItem.getAttribute('src')) {
+    oldImage.src = clickedItem.src;
   }
 
 };
 
-imgChinookElement.addEventListener('click', onChinookClick);
-
-var imgChinookElement = document.getElementById('img-chinook-salmon');
-
-var onChinookClick = function(event) {
-  event.preventDefault();
-  console.log('Chinook image clicked.');
-
-  var oldImage = document.getElementById('featured-image');
-
-  if (oldImage.getAttribute('src') !== 'img/chinook.jpg') {
-    oldImage.src = 'img/chinook.jpg';
-  }
-
-};
-
-imgChinookElement.addEventListener('click', onChinookClick);
+imgChinookElement.addEventListener('click', handleImageChange);
+imgCutterElement.addEventListener('click', handleImageChange);
+imgFrostedCookieElement.addEventListener('click', handleImageChange);
