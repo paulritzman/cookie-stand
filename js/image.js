@@ -16,6 +16,7 @@ var handleImageChange = function(event) {
 
   if (oldImage.getAttribute('src') !== clickedItem.getAttribute('src')) {
     oldImage.src = clickedItem.src;
+    oldImage.alt = clickedItem.alt;
   }
 };
 
